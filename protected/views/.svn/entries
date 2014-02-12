@@ -1,0 +1,40 @@
+10
+
+dir
+9325
+svn+ssh://fjlopez@merovingio.inf.um.es/opt/svn-csaesumu/anotaciones/virtualizacion/vagrantweb/protected/views
+svn+ssh://fjlopez@merovingio.inf.um.es/opt/svn-csaesumu
+
+
+
+2013-07-29T11:50:58.122241Z
+9301
+fjlopez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ba35cbf9-6f3f-4c47-8bc9-f733df4a0683
+
+node
+dir
+
+layouts
+dir
+
+vm
+dir
+
+site
+dir
+

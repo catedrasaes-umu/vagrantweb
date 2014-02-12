@@ -1,0 +1,77 @@
+.grid-view table.items th, .grid-view table.items td 
+{
+	text-align: center;
+}
+/*
+.grid-view #ONLINE
+{
+	background: none repeat scroll 0 0 rgba(188,231,116,0.7);
+}*/
+
+
+td.online
+{
+	background: none repeat scroll 0 0 rgba(188,231,116,0.7);
+}
+
+td.offline
+{
+	background: none repeat scroll 0 0 rgba(229,117,117,0.7);
+}
+
+.grid-view .filters input, .grid-view .filters select {
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    width: 100%;
+}
+
+.grid-view #node-status
+{
+	font-weight: bold;
+}
+
+
+#highlighted-config ol
+{
+	margin: 1em;
+}
+
+/*Espacio entre imágenes en el grid*/
+.grid-view .button-column img {
+	padding-right: 4px;
+}
+
+
+/*estableciendo un color de fondo para la snapshot del estado actual*/
+.treeview #current_state
+{
+    background-color:rgba(88,159,200,0.3);
+}
+
+#snapshot-treeview a.selected
+{
+    /*background-color: #BCE774;*/
+    background-color: #ECFBD4;
+}
+
+/*div #snapshot-details
+{
+	position: absolute;
+	bottom: 50px;
+	width: 449px;
+}
+div #restore-button
+{
+	position: absolute;
+	bottom: 20px;
+}*/
+
+/*.checkbox-column.hidden input{
+    display: none;
+}*/
+/*
+thead th
+{
+	border-radius: 5px 5px 5px 5px;
+}
+*/

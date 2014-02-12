@@ -1,0 +1,440 @@
+2013/06/28 13:37:46 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/gii/GiiModule.php:168
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(DefaultController), Object(CInlineAction))
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii')
+#3 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/vagrantweb/index.php?r=gii
+---
+2013/07/01 09:08:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "node".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/vagrantweb/index.php?r=node
+---
+2013/07/01 09:08:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nodecontroller".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nodecontroller')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/vagrantweb/index.php?r=nodecontroller
+---
+2013/07/01 09:08:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nodecontroller/index.php".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nodecontroller/...')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/vagrantweb/index.php?r=nodecontroller/index.php
+---
+2013/07/01 09:08:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nodeController/...')
+#3 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/vagrantweb/index.php?r=nodeController/index.php
+---
+2013/07/01 09:08:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "node/index.php".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/index.php')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/vagrantweb/index.php?r=node/index.php
+---
+2013/07/01 09:10:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('NodeController/...')
+#3 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/vagrantweb/index.php?r=NodeController/index.php
+---
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:09 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:13 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (129)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:28:34 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:00 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:10 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:32 [trace] [application] 'PRUEBA'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (125)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:41 [trace] [application] 'PRUEBA'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (125)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "log" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "request" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "urlManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.web.filters.CFilterChain] Running filter NodeControllerController.filteraccessControl()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "user" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "session" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [application] 'PRUEBA'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (125)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [application] PRUEBA
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "db" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.CDbConnection] Opening DB connection
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA table_info('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.CDbCommand] Querying SQL: PRAGMA foreign_key_list('node_table')
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (127)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "widgetFactory" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.ar.CActiveRecord] NodeModel.count()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.CDbCommand] Querying SQL: SELECT COUNT(*) FROM 'node_table' 't'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.ar.CActiveRecord] NodeModel.findAll()
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.db.CDbCommand] Querying SQL: SELECT * FROM 'node_table' 't' LIMIT 10
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "assetManager" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "clientScript" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:29:51 [trace] [system.CModule] Loading "coreMessages" application component
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/views/nodeController/index.php (20)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (130)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:31:03 [trace] [frandeb] 'PRUEBA'
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (125)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
+2013/07/01 09:31:03 [trace] [frandeb] PRUEBA
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/protected/controllers/NodeControllerController.php (126)
+in /home/fran/svn_catedra/anotaciones/virtualizacion/vagrantweb/index.php (13)
