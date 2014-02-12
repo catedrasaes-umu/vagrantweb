@@ -32,7 +32,12 @@ This plugin has been developed in the context of the [Catedra SAES](http://www.c
 Just clone the repository under yout web server document root and configure your web server to add this site.
 
 ##Usage
-Access to the web with the login name `admin` and password `catedrasaes` and enjoy.
+
+* Access to the web with the login name `admin` and password `catedrasaes`
+* Go to button `Create Node` in order to add your first node
+* The node must be running [Vagrant](http://www.vagrantup.com/) and the plugin [Vagrant-Node](https://github.com/fjsanpedro/vagrant-node)
+* Fill in the data, including the node password in order to login properly.
+* Enjoy
 
 
 
