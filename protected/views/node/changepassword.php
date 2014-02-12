@@ -13,7 +13,6 @@ $this->menu=array(
 	array('label'=>'Modify Node', 'url'=>array('update', 'id'=>$node)),
 	array('label'=>'Delete Node', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$node),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Edit Configuration', 'url'=>array('editconfig','id'=>$node)),
-//	array('node/editconfig'),'params'=>array('id'=>$model->node_name,'cfile'=>'puto')));
 	//array('label'=>'Manage Nodes', 'url'=>array('admin')),
 );
 ?>
