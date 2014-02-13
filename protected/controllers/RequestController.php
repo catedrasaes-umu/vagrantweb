@@ -320,7 +320,7 @@ class RequestController extends Controller
 		
 	}
 	
-	private function execute_request($node,$http_verb,$path, $params = NULL,$timeout=0)
+	private static function execute_request($node,$http_verb,$path, $params = NULL,$timeout=0)
 	{		
 		
 		//$noderow=NodeModel::model()->findByPk($node_id);

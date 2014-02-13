@@ -19,8 +19,8 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 )); ?>
 
 <div class="row">
-	<? echo CHtml::label('Box Name','box-name');?></br>
-	<? echo CHtml::textField('box-name','',array('size'=>60,'maxlength'=>50,'style'=>"margin-top:10px;margin-bottom:10px")); ?>
+	<?php echo CHtml::label('Box Name','box-name');?></br>
+	<?php echo CHtml::textField('box-name','',array('size'=>60,'maxlength'=>50,'style'=>"margin-top:10px;margin-bottom:10px")); ?>
 </div>
 
 <div class="upload-box-method" style="margin-top:10px;">

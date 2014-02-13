@@ -296,7 +296,7 @@ echo CHtml::button('Stop', array('href'=>Yii::app()->createUrl("vm/command", arr
 
 <div class="clear"></div>
 
-<? //echo CHtml::textArea('log', "",array('style' => 'width:100%;height:300px;margin-top:15px;resize:none;cursor:default','readonly'=>'true'));?>
+
 
 <?php	
 // $this->endWidget('zii.widgets.jui.CJuiDialog');	
@@ -533,7 +533,7 @@ jQuery('#run, #pause, #stop').live('click',function() {
 function reload_page(){
 	lazyLoadGridView();
 	//$("#node-model-grid").live("change",function(event,params){alert("TRIGGEADONODEGRID");});
-	setTimeout( reload_page, <?=$refresh_time*1000?> );
+	setTimeout( reload_page, <?php echo $refresh_time*1000?> );
 }
 
 $( document ).ready(function() {

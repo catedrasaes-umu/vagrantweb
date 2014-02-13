@@ -20,7 +20,7 @@ echo CHtml::textArea('edit-node-config', $cfile, array('rows' => 55, 'cols' => 8
 ?>
 
 <div id="buttons">
-<? 
+<?php 
 echo CHtml::button('Save', array('submit' => Yii::app() -> createUrl("node/uploadconfig", array('node' => $id)), 'params' => array('cfile' => 'tio'), ));
 echo CHtml::button('Cancel', array('submit' => array('view', 'id' => $id)));
 ?>
