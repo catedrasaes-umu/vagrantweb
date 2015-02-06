@@ -1,4 +1,5 @@
 #!/usr/bin/env php
 <?php
 
+date_default_timezone_set('Europe/Madrid');
 require_once(dirname(__FILE__).'/yiic.php');

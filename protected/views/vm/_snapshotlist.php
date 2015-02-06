@@ -11,10 +11,7 @@ $this->widget('CTreeView',array(
     'data'=>$data,
     'animated'=>'fast',
     'collapsed'=>false,
-    //'htmlOptions'=>array(
-    	//'onclick'=>'js:function(){alert("HOLA")}',	
-         // // 'class'=>'treeview-black'
-     //),
+    
 ));
 
 
@@ -121,9 +118,7 @@ echo CHtml::button('Close',array('onClick'=>'js:$("#snapshot-list-dialog").dialo
 		if (data.length==0)
 			alert("Please select a snapshot to restore");
 		else{
-			 // $("#node-status-loading-dialog").dialog({title: "Restoring Snapshot"});			 
-// 			 
-        	 // $("#node-status-loading-dialog").dialog("open");
+			 
 			$.ajax({
         		type: 'GET',
         		timeout:0,
@@ -178,11 +173,7 @@ echo CHtml::button('Close',array('onClick'=>'js:$("#snapshot-list-dialog").dialo
 		divdetails.siblings('#snap_current_state_tag').text(((state.length==0)?"NO":"YES"));
 		
 		
-		//FIXME DELETE		
-		// $('div#snapshot-details.view span#snap_name_tag').text($('input#'+data.attr("id")+'_name').attr('value'));
-		// $('div#snapshot-details.view span#snap_description_tag').text($('input#'+data.attr("id")+'_description').attr('value'));
-		// $('div#snapshot-details.view span#snap_timestamp_tag').text($('input#'+data.attr("id")+'_timestamp').attr('value'));
-		// $('div#snapshot-details.view span#snap_current_state_tag').text($('input#'+data.attr("id")+'_current_state').attr('value'));
+		
 		
 	}
 	function changeCurrentState(uuid)
@@ -210,7 +201,7 @@ $( document ).ready(function() {
 			
 		if (params.operation_result==200)
 		{
-			console.log();
+			
 				
 			changeCurrentState(jQuery.parseJSON(params.operation_msg)["web1"][0]);
 	    	selectSnapshot($("div#snapshot-tree.view a#"+jQuery.parseJSON(params.operation_msg)["web1"][0]));

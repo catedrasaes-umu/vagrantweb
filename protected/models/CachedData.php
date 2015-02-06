@@ -10,6 +10,7 @@
  * @property string $provider
  * @property string $status
  * @property string $expiration
+ * @property integer $priority
  */
 class CachedData extends CActiveRecord
 {
@@ -69,6 +70,7 @@ class CachedData extends CActiveRecord
 			'vm_name' => 'Vmname',
 			'provider' => 'Provider',
 			'status' => 'Status',
+			
 			//'' => 'Created At',
 		);
 	}
@@ -89,6 +91,7 @@ class CachedData extends CActiveRecord
 		$criteria->compare('vm_name',$this->vm_name,true);
 		$criteria->compare('provider',$this->provider,true);
 		$criteria->compare('status',$this->status,true);
+		
 		//$criteria->compare('expiration',$this->expiration,true);
 
 		return new CActiveDataProvider($this, array(

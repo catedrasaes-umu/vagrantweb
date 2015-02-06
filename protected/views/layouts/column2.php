@@ -1,27 +1,54 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="span-5">
+<div class="col-lg-2" style="display:none">
 	 <div id="sidebar">
 	 <?php
-		// $this->beginWidget('zii.widgets.CPortlet', array(
-			// 'title'=>'Configuration',
-		// ));
-		// $this->widget('zii.widgets.CMenu', array(
-			// 'items'=>array(
-				// array('label'=>'TODO', 'url'=>array('TODO')),
-				// array('label'=>'TODO', 'url'=>array('TODO')),
-				// array('label'=>'TODO', 'url'=>array('TODO')),
-			// ),
-			// 'htmlOptions'=>array('class'=>'operations'),
-		// ));
-		// $this->endWidget();
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'Configuration',
+		));
+		$this->widget('booster.widgets.TbMenu', array(
+			'type' => 'list',
+			'items'=>array(
+				array(
+                'label' => 'Configuration',
+                'itemOptions' => array('class' => 'nav-header')
+            	),
+				array('label'=>'Groups', 'url'=>array('/project/index')),
+				'',
+				array('label'=>'Nodes', 'url'=>array('/node/index')),
+				'',
+				array('label'=>'Users', 'url'=>array('/user/admin')),				
+			),
+			'htmlOptions'=>array('class'=>'operations'),
+		));
+		$this->endWidget();
+
+
+
+		$this->widget('booster.widgets.TbMenu', 
+			array(
+			'type' => 'list',
+			'items'=>array(
+				array(
+                'label' => 'Configuration',
+                'itemOptions' => array('class' => 'nav-header')
+            	),
+				array('label'=>'Groups', 'url'=>array('/project/index')),
+				'',
+				array('label'=>'Nodes', 'url'=>array('/node/index')),
+				'',
+				array('label'=>'Users', 'url'=>array('/user/admin')),				
+			),			
+		));
+
 	?>
 	
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'Operations',
 		));
-		$this->widget('zii.widgets.CMenu', array(
+		$this->widget('booster.widgets.TbMenu', array(
+			'type' => 'list',
 			'items'=>$this->menu,
 			'htmlOptions'=>array('class'=>'operations'),
 		));
@@ -30,11 +57,11 @@
 	</div>
  </div>
 
-<div class="span-18">	
+<!-- <div class="col-lg-12">	 -->
 	<div id="content">		
 		<?php echo $content; ?>
 	</div><!-- content -->
-</div>
+<!-- </div> -->
 <!-- <div class="span-5 last">
 	 <div id="sidebar">
 	 <?php

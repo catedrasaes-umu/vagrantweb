@@ -3,7 +3,7 @@
 /* @var $model NodeModel */
 
 $this->breadcrumbs=array(
-	'Node Models'=>array('index'),
+	'Nodes'=>array('index'),
 	'Create',
 );
 
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Node</h1>
+<h1 class="page-header">Create Node</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

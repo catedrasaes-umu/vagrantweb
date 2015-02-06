@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Nodes <?php echo $model->node_name; ?></h1>
+<h1 class="page-header" style="text-transform:capitalize">Node: <?php echo $model->node_name; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

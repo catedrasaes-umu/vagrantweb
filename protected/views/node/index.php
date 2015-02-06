@@ -14,6 +14,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Node', 'url'=>array('create')),
 	array('label'=>'Manage Nodes', 'url'=>array('admin')),
+	array('label'=>'Manage Groups', 'url'=>array('project/index')),
+	
 );
 
 echo $this->renderPartial('_snapdialogs');
@@ -24,19 +26,24 @@ echo $this->renderPartial('_snapdialogs');
 <!--Esto hace que el grid se cargue cuando la página se cargue del todo-->
 <script type="text/javascript">	
 	onload = function() { 
-			lazyLoadGridView();			
+			//lazyLoadGridView();			
+			reload_page();
 		}
+
+
+	//Setting global variable
+	var selectedrows = undefined;
+
 </script>
 
 
-<h1>List of Nodes:</h1>
+<h1 class="page-header">List of Nodes:</h1>
 
 
 
 <?php 	
 	Yii::app()->clientScript->registerScript(
-   'hideFlashEffect',
-   //'$("#flash-messages").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+   'hideFlashEffect',   
    '$("#flash-messages").fadeIn().delay(3000).fadeOut("slow")',
    
    CClientScript::POS_READY
@@ -50,7 +57,7 @@ echo $this->renderPartial('_snapdialogs');
 	
 	if ($flashMessages) {		
 	    foreach($flashMessages as $key => $message) {
-	    	debug($message.time());
+	    	// debug($message.time());
 	        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
 	    }
 		
@@ -60,59 +67,18 @@ echo $this->renderPartial('_snapdialogs');
 
 </div>
 
-<?php	
-	
+<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12" id="node-header" style="padding-left:0">
 
-	// $this->widget('ext.groupgridview.GroupGridView', array(
-	// 'id'=>'node-model-grid',
-	// //'dataProvider'=>$model->search(),
-	// 'dataProvider'=>$dataProvider,
-	// 'filter'=>$dataProvider->model,
-	// //'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
-    // 'summaryText' => 'Displaying {start} - {end} of {count} nodes',    
-    // //'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/customize.css'),
-	// //'htmlOptions' => array('class' => 'grid-view'),
-	// 'rowHtmlOptionsExpression' =>'array("id"=>"$data->onlinestr")',
-	// 'mergeColumns' => array('node_port'),  
-	// 'columns'=>array(		
-		// 'name' => 'node_name',
-		// array(
-			// 'header' =>'Boxes',
-			// 'class'=>'CLinkColumn',
-			// 'label' => 'Manage Boxes',
-		// ),
-		// array(
-			// 'header' =>'Virtual Machines',
-			// 'class'=>'CLinkColumn',
-			// 'label' => 'Manage Virtual Machines',
-			// //'url'=>'Yii::app()->createUrl("vm/list",array("id"=>$data["node_name"]))',
-			// // 'options'=>array(
-                                                    // // 'ajax'=>array(
-                                                            // // 'type'=>'POST',
-                                                            // // 'url'=>"js:$(this).attr('href')",                                                               
-                                                    // // ),
-                                            // // ),
-		// ),
-// 		
-// 		
-		// array(
-			 // 'header' =>'Status',
-			 // 'class'=>'CDataColumn',
-			 // 'type' => 'text',
-			 // 'value' => '$data->onlinestr',			 
-			 // 'htmlOptions' => array('id' => 'node-status'),			 		 
-		// ),	
-// 		
-		// array(
-			// 'class'=>'CButtonColumn',
-		// ),
-	// ),
-// )); 
+<div class="panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-table fa-fw"></i> Global View
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
 
 
 
-
-
+<?php
 $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
 			'id'=>'node-model-grid',
             'dataProvider'=>$dataProvider,            
@@ -120,17 +86,30 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
             'ajaxVar' => 'ajaxFiltering',            
             'mergeColumns' => array('node_name'),
             'template'=> Yii::app()->request->getIsAjaxRequest()? '{summary}{items}{pager}': '{summary}{pager}',
-            'beforeAjaxUpdate'=>'function(id, data){ $("#node-status-loading-dialog").dialog("open"); }',                        
-            'afterAjaxUpdate'=>'function(id, data){ $("#node-status-loading-dialog").dialog("close"); }',            
+            'beforeAjaxUpdate'=>'function(id, data){
+            	$("#node-status-loading-dialog").dialog("close");             	
+            	selectedrows=getSelectedRows();
+            }',                        
+            'afterAjaxUpdate'=>'function(id, data){ 
+            	$("#node-status-loading-dialog").dialog("close"); 
+    
+             	$.each(selectedrows, function( i, value ){
+             		aux=value["node"]+"_"+value["id"];
+					$("td.checkbox-column > input[value=\'"+aux+"\']").click();
+				});
+				
+            }',            
             //'ajaxUpdateError'=>'function(id, data){ $("#node-status-loading-dialog").dialog("close");   }',
             'ajaxUpdate'=>'node-model-grid',
             //Añadiendo clase extra a las de even y odd
             'rowCssClassExpression' => '( $row%2 ? $this->rowCssClass[1] : $this->rowCssClass[0] ) .
-								        ( $data["node_status"] ? null : " offline" )
+            							( ($data["busy"]==true) ? " busy" : null ) .
+            							( $data["vm_name"] ? null : " default" ) .
+								        ( $data["node_status"] ? null : " offline" ) 								        
 								    ',			
-            'selectionChanged' => 'function(row){ rowSelected(row);   }',
+            'selectionChanged' => 'function(row){  rowSelected(row);   }',
             'selectableRows' => 2,
-            'summaryText' => 'Displaying {start} - {end} of {count} nodes',            
+            'summaryText' => 'Displaying {start} - {end} of {count} nodes',                        
             'columns'=>array(
             	
                 array(
@@ -138,7 +117,7 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
                     'name'=>'node_name',
                     'type'	=> 'raw',
                     'value'=>'CHtml::link($data["node_name"], array("node/view","id"=>$data["node_name"]))',                    
-                    'cssClassExpression' => '$data["node_status"]? "online" : "offline"',
+                    'cssClassExpression' => '$data["node_status"]? "online" : "offline"',                    
 					),
                 array(
                     'header'=>'Virtual Machine',
@@ -156,56 +135,58 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
                 array(
                     'header'=>'Status',
                     'name'=>'status',
-                    //'value'=> function ($data,$row){
-                    	//$this->attachEventHandler(function($event){});
-                    	//return $data["status"];
-                    //},                   
+                    
                     'cssClassExpression' => '$data["node_status"]? "vm_status" : "offline"',
-                ),                
+                ),
+         
                 array(
 				    'class'=>'CButtonColumn',
 				    'template'=>'{run}{pause}{stop}',
-				    'cssClassExpression' => '$data["node_status"]? "" : "offline"',
+				    'cssClassExpression' => '($data["busy"]==true)?"busy":(($data["node_status"])? "" : "offline")',
 				    'header'=>'Actions',
 				    'buttons'=> array
     				(
 	    				'run' => array
 				        (				        
 				            'label'=>'Run Virtual Machine',
-				            'imageUrl'=>Yii::app()->request->baseUrl.'/images/play.png',
+				            'imageUrl'=>Yii::app()->request->baseUrl.'/images/play.png',	
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',			            
 				            'url'=>'Yii::app()->createUrl("vm/command", array("id"=>$data["vm_name"],
 				            												  "node"=>$data["node_name"],
 				            												  "command"=>"run"))',
 				           	'options' => array('id'=>'run'),
-				            'visible' => '$data["node_status"]',
+				            //'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 
-				        ),
+				        ),				        
 				        'pause' => array
 				        (				        	
 				            'label'=>'Pause Virtual Machine',
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 				            'imageUrl'=>Yii::app()->request->baseUrl.'/images/pause.png',
 				            'url'=>'Yii::app()->createUrl("vm/command", array("id"=>$data["vm_name"],
 				            												  "node"=>$data["node_name"],
 				            												  "command"=>"pause"))',
 						    'options' => array('id'=>'pause'),						    
-				            'visible' => '$data["node_status"]',
+				            //'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 				        ),
 				        'stop' => array
 				        (
 				            'label'=>'Stop Virtual Machine',
 				            'imageUrl'=>Yii::app()->request->baseUrl.'/images/stop.png',
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 				            'url'=>'Yii::app()->createUrl("vm/command", array("id"=>$data["vm_name"],
 				            												  "node"=>$data["node_name"],				            												  
 				            												  "command"=>"halt"))',
 						    'options' => array('id'=>'stop'),
-				            'visible' => '$data["node_status"]',
+				            //'visible' => '$data["node_status"] && $data["vm_name"]!=""',
+				            //'visible' => array($this,'isActionable'),
 				        ),
     				),
 				),
 				array(
 				    'class'=>'CButtonColumn',
 				    'template'=>'{snapshot}{snapshot_list}{backup}',
-				    'cssClassExpression' => '$data["node_status"]? "" : "offline"',
+				    'cssClassExpression' => '($data["busy"]==true)?"busy":(($data["node_status"])? "" : "offline")',
 				    'header'=>'Backup',
 				    'buttons'=> array
     				(
@@ -216,7 +197,7 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
 				            'url'=>'Yii::app()->createUrl("vm/takesnapshot", array("id"=>$data["vm_name"],
 				            												  "node"=>$data["node_name"]))',
 				           	'options' => array('id'=>'snapshot'),
-				            'visible' => '$data["node_status"]',
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 			            	'click'	  =>'js:function(){			            					
 			            					$.ajax({
 								        		type: "GET",								        		
@@ -241,7 +222,7 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
 				            												  "node"=>$data["node_name"],
 				            												  ))',
 						    'options' => array('id'=>'snapshot_list'),						    
-				            'visible' => '$data["node_status"]',
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 				            'click'=>'js:function(){				            							            			
 				            			$.ajax({
 								        		type: "GET",								        		
@@ -265,7 +246,7 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
 				            												  "node"=>$data["node_name"],				            												  
 				            												  "command"=>"halt"))',
 						    'options' => array('id'=>'backup'),
-				            'visible' => '$data["node_status"]',
+				            'visible' => '$data["node_status"] && $data["vm_name"]!=""',
 				        ),
     				),
 				),
@@ -276,77 +257,85 @@ $dashboard=$this->widget('ext.groupgridview.GroupGridView', array(
             		//'selectableRows' => 2,          
             		'id' => 'node-check',  		
             		//'cssClassExpression'=> '$data["node_status"]? "" : "hidden"',
-            		'disabled' =>  '!$data["node_status"]',         		
+            		'disabled' =>  '$data["busy"] || !$data["node_status"] || $data["vm_name"]==""',
+            		'value' => '$data["node_name"]."_".$data["vm_name"]',
+            		
+
+
 				),                                                   
 				
             ),
         )); 
 
+?>
 
-		
-echo CHtml::button('Run', array('href'=>Yii::app()->createUrl("vm/command", array("command"=>"run")),'id' => 'run-button','disabled'=> true));
-echo CHtml::button('Pause', array('href'=>Yii::app()->createUrl("vm/command", array("command"=>"pause")),'id' => 'pause-button','disabled'=> true));
-echo CHtml::button('Stop', array('href'=>Yii::app()->createUrl("vm/command", array("command"=>"halt")),'id' => 'stop-button','disabled'=> true));
-//echo CHtml::button('Snapshot', array('href'=>Yii::app()->createUrl("vm/batchsnapshot"),'id' => 'snapshot-button','disabled'=> true));
+<div class="buttons">
+	
 
+<?php
 
-// echo CHtml::textArea('edit-node-config', $cfile, array('rows' => 55, 'cols' => 85));
+$this->widget('booster.widgets.TbButton',
+				array('buttonType' => 'link', 
+					'label' => 'Run',
+					'url' => Yii::app()->createUrl("vm/command", array("command"=>"run")),
+					'htmlOptions' => array('id' => 'run-button','disabled'=>true,'style'=>'margin-right:20px')));
+
+$this->widget('booster.widgets.TbButton',
+				array('buttonType' => 'link', 
+					'label' => 'Pause',
+					'url' => Yii::app()->createUrl("vm/command", array("command"=>"pause")),
+					'htmlOptions' => array('id' => 'pause-button','disabled'=>true,'style'=>'margin-right:20px')));
+
+$this->widget('booster.widgets.TbButton',
+				array('buttonType' => 'link', 
+					'label' => 'Stop',
+					'url' => Yii::app()->createUrl("vm/command", array("command"=>"halt")),
+					'htmlOptions' => array('id' => 'stop-button','disabled'=>true,)));
 
 ?>
+</div>
+</div>
+</div>
+</div>
+
+ <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" id="notificationarea">
+    <div class="panel panel-primary" id="alertas">
+        <div class="panel-heading">
+            <i class="fa fa-bell fa-fw"></i> Operation Notification Panel
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">            	
+            </div>
+            <!-- /.list-group -->
+            <a href="<?=Yii::app()->createUrl("node/operations")?>" class="btn btn-default btn-block">View All Operations</a>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+</div>
+
 
 <div class="clear"></div>
 
-
-
-<?php	
-// $this->endWidget('zii.widgets.jui.CJuiDialog');	
-// 
-// 
-// //FIXME DELETE EJEMPLOS DE OPCIONES DE DIALOGOS
-// // 'draggable'=>true,
-                            // // 'resizable'=>true,
-                            // // 'closeOnEscape' => true,                                                       
-                            // // 'show'=>'fade',
-                            // // 'hide'=>'fade',
-                            // // 'position'=>'center',
-                            // // 'modal'=>true,
-// 
-// 
-// //echo CHtml::button('Vagrant Config', array('onClick'=>'js:$("#snapshot-list-dialog").dialog("open");','id' => 'showconfig-button','style' => 'margin: 20px 0 30px 0;'));
-?>
-
-
 <script type="text/javascript">
+
     function lazyLoadGridView(){   
     	 
-    	 var nodes = <?php echo json_encode($nodes);?>;
+    	 
+    	 var nodes = <?php echo json_encode($nodes); ?>;
+    	 
     	 
     	 
     	 
     	 //Filling the grid dynamicly    	 
-    	 $.each( nodes, function( key, value ) {    	 	  			
+    	 $.each( nodes, function( key, value ) {    	 	  			    	 	
   			$.fn.yiiGridView.update('node-model-grid',{
        		data: "node="+value,
-       		});
+       		});       		
+    	 	
 		 });
-		 
-		 
-		 
-    	 // console.log(nodes);
-        //$.fn.yiiGridView.update('node-model-grid');
-        // $.fn.yiiGridView.update('node-model-grid',{
-       		// data: "node=Nodopruebas",
-       // });
-        // $.fn.yiiGridView.update('node-model-grid',{
-                       		// data: "node=Nodo2",
-                       // });
-                       // $.fn.yiiGridView.update('node-model-grid',{
-                       		// data: "node=NodoOffline",
-                       // });
-                       
-       
-        
-        //$('#node-status-loading').progressbar('option', 'value', 75);
+    	 
                
 	}
 
@@ -360,9 +349,15 @@ function commandButtonStatus(value)
 
 function rowSelected(row) {
 	   
-	   //Little hack to avoid selection in offline Nodes
+	   //Little hack to avoid selection in offline or busy Nodes
 	   $("tr.offline").removeClass("selected");
 	   $("tr.offline .select-on-check").prop('checked',false);
+
+	   $("tr.busy").removeClass("selected");
+	   $("tr.busy .select-on-check").prop('checked',false);
+
+	   $("tr.default").removeClass("selected");
+	   $("tr.default .select-on-check").prop('checked',false);
 	      
 	   
 	   
@@ -373,21 +368,96 @@ function rowSelected(row) {
        
 }
 
+function loadNotifications()
+{		
+
+		$.ajax({
+            type: "GET",                                                
+            url: "/vagrantweb/index.php?r=operation/last&last=7",                                                              
+            success:function(data) { 
+            	
+            	var todas=$.parseHTML(data);
+
+        		
+            	
+            	var indices = [];
+
+            	$("div#alertas div.list-group a.list-group-item div.notificacionmsg:visible").each(function( index ) {				  
+				  indices.push($(this).parent().attr('id'))
+				});
+
+    
+            	$("div#alertas div.list-group").empty();
+
+				var arrayLength = todas.length;
+				for (var i = 0; i < arrayLength; i++) {
+					var id = $(todas[i]).attr('id');					
+
+					if ($.inArray(id,indices)!=-1){				
+						$(todas[i]).children("div.notificacionmsg").show();
+					}
+					
+					$("div#alertas div.list-group").append($(todas[i]));
+				}
 
 
-//Función para ejecutar operaciones batch, recorre la lista de vm checkeadas,
-//obtiene ciertos parámetros y los pasa al controlador
-jQuery(	function($) {
-jQuery('#run-button, #pause-button, #stop-button, #snapshot-button').live('click',function() {
+				
+
+ //               $("div#alertas div.list-group").html(data);
+            },
+            error:function(x, t, m) {                            		
+                    $("#flash-messages").addClass("flash-error").html("Error retrieving operations");                                                 
+            }
+        });	
+}
+
+
+
+function addNotification()
+{
 	
+	$.ajax({
+            type: "GET",                                                
+            url: "/vagrantweb/index.php?r=operation/last&limit=1",                                                              
+            success:function(data) { 
+            	
+    			var max_alertas=7;
+				var cantidad = $("div#alertas div.list-group a.list-group-item").length;
+
+				if (cantidad>=max_alertas){
+					$("div#alertas div.list-group a.list-group-item").last().remove();
+				}
+
+
+
+				$("div#alertas div.list-group").prepend(data);
+				// $("div#alertas div.list-group").append(data);
+				//Añadir la última notificación
+
+            },
+            error:function(x, t, m) {                
+                    $("#flash-messages").addClass("flash-error").html("Error retrieving notifications");                                                 
+            }
+        });	
+
+
+}
+
+$(document).on("click", "div#alertas div.list-group a.list-group-item", function(event){		
+	
+	$(this).children("div.notificacionmsg").toggle("600");
+	return false;
+});
+
+function getSelectedRows(){
+
 	var vms = [];
 	//var checkboxCount=$("#node-model-grid").yiiGridView("getChecked","vm_name");
 	var checkboxCount = $.fn.yiiGridView.getChecked("node-model-grid","node-check");
 	
 	$.each(checkboxCount, function(key,value) {		
 		var row = $("#node-model-grid").yiiGridView("getRow",value);
-		console.log(row);
-		return;
+		
 		$.each(row,function(){		
 				
 			if ($(this).hasClass("vm_name"))
@@ -410,33 +480,31 @@ jQuery('#run-button, #pause-button, #stop-button, #snapshot-button').live('click
 		});		
 		
 	});
+	return vms;
+}
+
+//Función para ejecutar operaciones batch, recorre la lista de vm checkeadas,
+//obtiene ciertos parámetros y los pasa al controlador
+jQuery(	function($) {
+jQuery('#run-button, #pause-button, #stop-button, #snapshot-button').on('click',function() {
 	
+
 	
+	var vms=[];
+
+	vms=getSelectedRows();
+
 	if (vms.length === 0)
 		return false;
 	
-	//console.log($("#node-model-grid").yiiGridView.element);
-	// console.log($.fn.yiiGridView.getChecked("node-model-grid","node-check"));
-// 	 
-	  //console.log($("#node-model-grid").yiiGridView("getKey","1"));
-	  // console.log($("#node-model-grid").yiiGridView("getColumn","1"));
-	    // console.log($("#node-model-grid").yiiGridView("getSelection"));
-	// console.log($("#node-model-grid").yiiGridView("getRow","1"));
+	
 	var command =  $(this).attr("href");
 	
+	var boton = $(this);
 	
-	
-	//console.log($("#node-model-grid").yiiGridView("columns"));
 	
 	
 	$.each( vms, function( key, value ) {
-		// console.log(key);
-		// console.log(value["id"])  			
-  			// $.fn.yiiGridView.update('node-model-grid',{
-       		// data: {node:value["node"],id:value["id"]},url:command,
-       		// });
-		 
-	
 	
 		$.ajax({
 	        		type: 'GET',
@@ -449,66 +517,73 @@ jQuery('#run-button, #pause-button, #stop-button, #snapshot-button').live('click
 	        		        		
 	        		success:function(data) {
 	        				var msg = jQuery.parseJSON(data)	        		 				   												   						
-							
-	        				var row = $("#node-model-grid").yiiGridView("getRow",value["row"]);
+
+        					addNotification();
+
 	        				
-	        				$.each(row,function(){
-	        					if ($(this).hasClass("vm_status"))
-								{
-									$(this).text(msg.status);
-								}		
-	        				});
 	        					
 	        				
 	                       
 	                       
 	                },
 	                error:function(x, t, m) {
-	                	console.log(x);
 	                	
-	                	//$("#node-status-loading-dialog").dialog("close");                	
 	                	if (t=="timeout")
 	                	{                		
 	                		$("#flash-messages").addClass("flash-error").html("Request Timeout Error").fadeIn().delay(3000).fadeOut("slow");
 	                	}else{
 	                		if (x.responseText.length!=0)
-	                		{
-	                			//alert("FIXME: ERROR "+x.responseText);
+	                		{	                			
 	                			
 	                			$("#flash-messages").addClass("flash-error").html(x.responseText).fadeIn().delay(5000).fadeOut("slow");
 	                		}
 	                	}
 	                }
+	
             })
 			
 	});
+
+	boton.css("background-color", "white");
 	
 	return false;
 	
 });
 });	
 
+$(document).on("click", "#run, #pause, #stop", function(){		
 
 
-jQuery(function($) {
-jQuery('#run, #pause, #stop').live('click',function() {
-        $("#node-status-loading-dialog").dialog({title: "Performing Operation"});
-        $("#node-status-loading-dialog").dialog("open");
+
+     	
+     	bobject = $(this);
+     	tdsiblings = $(this).siblings();
+     	trparent = $(this).parents("tr");
+     	tdobject = trparent.find("td.vm_status");
+     	otherobject = $(this).parents("td").next("td.button-column").find("a");
+     	check = $(this).parents("td").nextAll("td.checkbox-column").find("input")
+     	
+
         $.ajax({
         		type: 'GET',
         		timeout:0, //No timeout
         		url: $(this).attr("href"),        		
         		success:function(data) {
-        			  console.log(data);
-        			  $("#node-status-loading-dialog").dialog("close");
-        			  var msg = jQuery.parseJSON(data)
-        			  
-	    				
-    				  $("#flash-messages").addClass("flash-success").html(msg.status).fadeIn().delay(3000).fadeOut("slow");
-					           						
-                       // $.fn.yiiGridView.update('node-model-grid',{
-                       		// data: "ajaxUpdateRequest=true",
-                       // });
+        			  //console.log(data);
+					$("#node-status-loading-dialog").dialog("close");
+					var msg = jQuery.parseJSON(data)
+
+					trparent.addClass("busy");
+					check.prop("disabled",true);
+					otherobject.hide();
+					bobject.hide();
+					tdsiblings.hide();
+					tdobject.text(msg.status);
+
+					
+					$("#flash-messages").addClass("flash-success").html("Operation Queued").fadeIn().delay(3000).fadeOut("slow");
+					       						
+					
                        
                 },
                 error:function(x, t, m) {    	
@@ -518,8 +593,7 @@ jQuery('#run, #pause, #stop').live('click',function() {
                 		$("#flash-messages").addClass("flash-error").html("Request Timeout Error").fadeIn().delay(3000).fadeOut("slow");
                 	}else{
                 		if (x.responseText.length!=0)
-                		{
-                			//alert("FIXME: ERROR "+x.responseText);
+                		{                	
                 			$("#flash-messages").addClass("flash-error").html(x.responseText).fadeIn().delay(5000).fadeOut("slow");
                 		}
                 	}
@@ -527,28 +601,39 @@ jQuery('#run, #pause, #stop').live('click',function() {
             })
         
         return false;
-});
+//});
 });
 
 function reload_page(){
 	lazyLoadGridView();
-	//$("#node-model-grid").live("change",function(event,params){alert("TRIGGEADONODEGRID");});
-	setTimeout( reload_page, <?php echo $refresh_time*1000?> );
+	
+	// setTimeout( reload_page, <?php echo $refresh_time*1000?> );	
+	//FIXME PARA HACER PRUEBAS ESTABLEZCO UN TIEMPO MENOR
+	setTimeout( reload_page, 30000 );	
 }
 
 $( document ).ready(function() {
-	$('#operation_log').show();
 	
-	setTimeout(reload_page,120000);
-	
+
+	loadNotifications();
 	
 	$(document).on("updateAsync",function(event,params){
+		
 		if (params.operation=="VM_STATUS")
 		{	
+			
 			$.fn.yiiGridView.update('node-model-grid',{
        		data: "node="+params.node,
        		});
+       		loadNotifications();
 		}
+		
+	});
+
+	$(document).on("operationPolling",function(event,params){
+		
+       	loadNotifications();
+		
 		
 	});
 	

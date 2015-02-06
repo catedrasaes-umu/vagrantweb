@@ -1,0 +1,25 @@
+
+#rights .flashes {
+	position:relative;
+	top:inherit;
+	left:inherit;
+	margin-top:15px;
+	margin-bottom:50px;
+	height:0;
+	width:100%;
+}
+
+#content {
+	padding-top:0;
+}
+
+.container#rights {
+	width:100%;
+	margin-right:0;
+	padding-right:0;
+}
+
+.permission-table table.items tr > td:first-child
+{
+	text-align: left;
+}

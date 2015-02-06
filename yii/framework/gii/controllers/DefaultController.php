@@ -1,6 +1,6 @@
 <?php
 
-class DefaultController extends CController
+class DefaultController extends RController
 {
 	public $layout='/layouts/column1';
 
@@ -12,7 +12,7 @@ class DefaultController extends CController
 			return 'Gii - '.ucfirst($this->action->id).' Generator';
 	}
 
-	public function actionIndex()
+	public function actionIndex()			
 	{
 		$this->render('index');
 	}

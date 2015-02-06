@@ -40,11 +40,11 @@ class OperationModel extends CActiveRecord
 		return array(
 			array('node_name, operation_status, operation_result', 'required'),
 			array('operation_status', 'numerical', 'integerOnly'=>true),
-			array('operation_command, operation_result', 'length', 'max'=>255),
+			array('operation_command, operation_specific', 'length', 'max'=>255),
 			array('node_name', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, operation_command, node_name, operation_status, operation_result', 'safe', 'on'=>'search'),
+			array('id, operation_command,operation_specific, node_name, operation_status, operation_result', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +67,7 @@ class OperationModel extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'operation_command' => 'Operation Command',
+			'operation_specific' => 'Operation Specific',
 			'node_name' => 'Node Name',
 			'operation_status' => 'Operation Status',
 			'operation_result' => 'Operation Result',
@@ -86,6 +87,7 @@ class OperationModel extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('operation_command',$this->operation_command,true);
+		$criteria->compare('operation_specific',$this->operation_specific,true);
 		$criteria->compare('node_name',$this->node_name,true);
 		$criteria->compare('operation_status',$this->operation_status);
 		$criteria->compare('operation_result',$this->operation_result,true);

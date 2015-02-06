@@ -800,8 +800,12 @@ class CWebUser extends CApplicationComponent implements IWebUser
 	 */
 	public function checkAccess($operation,$params=array(),$allowCaching=true)
 	{
+		
+
 		if($allowCaching && $params===array() && isset($this->_access[$operation]))
 			return $this->_access[$operation];
+
+
 
 		$access=Yii::app()->getAuthManager()->checkAccess($operation,$this->getId(),$params);
 		if($allowCaching && $params===array())

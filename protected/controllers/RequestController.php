@@ -4,7 +4,7 @@ include_once 'RouteController.php';
 include_once 'OperationController.php';
 
 
-class RequestController extends Controller
+class RequestController extends CController
 {
 	
 	const COOKIE= "COOKIE_TOKEN";
@@ -40,27 +40,111 @@ class RequestController extends Controller
 		
 	}
 	
+	public static function delete_box_downloads($node)
+	{
+		
+		
+		$result = RequestController::execute_request($node,
+													 self::DELETE_VERB, 
+													 RouteController::box_download_route());
+		
+		
+			
+		return $result[1];
+		
+	}
+
+	public static function get_node_boxes_downloads($node)
+	{		
+		$boxes = RequestController::execute_request($node,self::GET_VERB, RouteController::box_download_route());
+		
+		if (is_null($boxes))
+			return null;
+		
+		return json_decode($boxes[1],true);
+		
+	}
+
+	public static function ping_node($node)
+	{
+		if (is_null($node))
+			return false;
+		
+		return RequestController::node_listening($node->node_address,$node->node_port);
+			
+	}
 	
-	
+	public static function get_vm_info($node,$vmname) {
+		if (is_null($vmname) || empty($vmname))
+			return null;
+
+		$vminfo = RequestController::execute_request($node,
+													self::GET_VERB, 
+													RouteController::vm_info_route($vmname));
+		
+		return json_decode($vminfo[1],true);	
+
+	}
+
 	/**
 	 * Retrieve virtual machines from node
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	//public static function get_vm_status($node_address,$node_port,$vm_name=null)
-	public static function get_vm_status($node,$vm_name=null)
+	public static function get_vm_status($node,$vm_name=null,$verbose=true)
 	{
 
 		if (is_null($vm_name))
 		{
 			$vms = RequestController::execute_request($node,
 													self::GET_VERB, 
-													RouteController::vm_status_all_route());			
+													RouteController::vm_status_all_route(),
+													array('verbose' => $verbose));
+			
+
+
+			
+
+						
 		}else{
-			//TODO
+			
+			$vms = RequestController::execute_request($node,
+													self::GET_VERB, 
+													RouteController::vm_status_route($vm_name),
+													array('verbose' => $verbose));						
 		}
+
+
+		if ($vms!=false) {
+
+			
+
+			$inspect=json_decode($vms[1]);										
+			$i=0;
+
+			foreach ($inspect as $vm) {
+				$remove=false;
+				if ($vm->name=="default")
+					unset($inspect[$i]);
+
+				$i++;
+				continue;
+				
+			}
+			
+			$vms[1]=json_encode($inspect);
+
+
+		
+		}
+
+
 		return ($vms===false)?null:json_decode($vms[1],true);
+		
 	}
 	
+
+
 	public static function node_listening($address,$port)
 	{
 		
@@ -114,7 +198,7 @@ class RequestController extends Controller
 				$route = RouteController::vm_suspend_route();
 	    		break;
 			case "halt":
-				$params['force']=true;
+				$params['force']=false;
 				$route = RouteController::vm_halt_route();
         		break;				
 		}	
@@ -131,6 +215,17 @@ class RequestController extends Controller
 		//return json_decode($result,true);	
 			
 		
+	}
+
+
+	public static function get_node_info($node){		
+		$result = RequestController::execute_request($node,
+													self::GET_VERB, 
+													RouteController::node_info_route());
+		
+		
+		
+		return json_decode($result[1],true);
 	}
 
 	public static function destroy_vm($node,$vm)
@@ -173,6 +268,9 @@ class RequestController extends Controller
 		
 	}
 	
+
+	
+	
 	
 	public static function add_box($node,$boxname,$url)
 	{	
@@ -183,7 +281,7 @@ class RequestController extends Controller
 													RouteController::box_add_route(),
 													array('box'=>$boxname,'url'=>$url));
 		
-			
+		
 		//return json_decode($result[1],true);
 		return $result;
 		
@@ -291,12 +389,12 @@ class RequestController extends Controller
 	}
 	
 	
-	private function calc_token($token,$node_password)
+	private static function calc_token($token,$node_password)
 	{		
 		return md5($token.$node_password);		
 	}
 	
-	private function login($node,$rest_client)
+	private static function login($node,$rest_client)
 	{
 		
 		//We want the response headers
@@ -330,7 +428,8 @@ class RequestController extends Controller
 			// return null;
 			
 		if (is_null($node))
-			return null;
+			return null;		
+
 		
 		if (!RequestController::node_listening($node->node_address,$node->node_port))
 			return null;	
@@ -364,13 +463,17 @@ class RequestController extends Controller
 		
 		
 		
-		
+		//var_dump($result);
 		
 // 		
+
+
 		
 		if ($rest->status()==202)
 		{						
-			OperationController::addBackgroundOperation(trim(str_replace("Location:","",$result)),RouteController::getOperationID($path),$node->node_name);				
+			
+			OperationController::addBackgroundOperation(trim(str_replace("Location:","",$result)),RouteController::getOperationID($path),$path,$node->node_name,$params);				
+
 		}
 		elseif ($rest->status()>=400)
 		{	

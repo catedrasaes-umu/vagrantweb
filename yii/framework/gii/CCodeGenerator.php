@@ -80,6 +80,7 @@ class CCodeGenerator extends CController
 	public function actionCode()
 	{
 		$model=$this->prepare();
+		debug($model);
 		if(isset($_GET['id']) && isset($model->files[$_GET['id']]))
 		{
 			$this->renderPartial('/common/code', array(

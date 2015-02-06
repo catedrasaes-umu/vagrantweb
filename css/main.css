@@ -9,17 +9,17 @@ body
 
 #page
 {
-	margin-top: 5px;
+	/*margin-top: 5px;*/
 	margin-bottom: 5px;
-	background: white;
-	border: 1px solid #C9E0ED;
+	/*background: white;
+	border: 1px solid #C9E0ED;*/
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	/*border-top: 3px solid #C9E0ED;*/
 }
 
 #content

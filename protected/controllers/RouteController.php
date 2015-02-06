@@ -1,11 +1,13 @@
 <?php
 
 
-class RouteController extends Controller
+class RouteController extends CController
 {
 	const BOX_LIST_ROUTE =	"/api/box/list";
 	//const BOX_DELETE_ROUTE =	"/api/box/:box/:provider/delete";
 	const BOX_ADD_ROUTE = "/api/box/add";
+	const BOX_DOWNLOAD_ROUTE =	"/api/box/download";
+
 	
 	const VM_UP_ROUTE = "/api/vm/up";
 	const VM_HALT_ROUTE = "/api/vm/halt";
@@ -35,6 +37,8 @@ class RouteController extends Controller
 	
 	const NODE_PASSWORD_CHANGE = "/api/password/change";
 	
+	const NODE_INFO = "/api/info";
+
 	
 	public static function getOperationID($operation)
 	{
@@ -79,6 +83,11 @@ class RouteController extends Controller
 	{
 		return self::BOX_LIST_ROUTE;
 	}
+
+	public static function box_download_route()
+	{
+		return self::BOX_DOWNLOAD_ROUTE;
+	}
 		
 	public static function box_delete_route($box,$provider)
 	{
@@ -118,6 +127,11 @@ class RouteController extends Controller
 	public static function vm_delete_route($vm)
 	{
 		return "/api/vm/".$vm."/delete";	
+	}	
+
+	public static function vm_info_route($vm)
+	{
+		return "/api/vm/".$vm."/info";	
 	}	
 	
 	public static function vm_add_route()
@@ -203,5 +217,9 @@ class RouteController extends Controller
 	public static function login_route()
 		  {
 		return self::LOGIN_ROUTE;
+	}
+
+	public static function node_info_route(){
+		return self::NODE_INFO;
 	}
 }

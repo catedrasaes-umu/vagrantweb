@@ -21,8 +21,30 @@ echo CHtml::textArea('edit-node-config', $cfile, array('rows' => 55, 'cols' => 8
 
 <div id="buttons">
 <?php 
-echo CHtml::button('Save', array('submit' => Yii::app() -> createUrl("node/uploadconfig", array('node' => $id)), 'params' => array('cfile' => 'tio'), ));
-echo CHtml::button('Cancel', array('submit' => array('view', 'id' => $id)));
+
+
+
+$this->widget(
+                'booster.widgets.TbButton',
+                array('buttonType' => 'submit', 
+                    'label' => 'Save',
+                    'htmlOptions' => array('submit'=>Yii::app()->createUrl("node/uploadconfig",array('node' => $id)),
+                                            'style'=>'margin-right:20px;margin-bottom:30px',
+                                            'params' => array('cfile' => 'tio'),)
+            ));
+
+
+$this->widget(
+                'booster.widgets.TbButton',
+                array('buttonType' => 'submit', 
+                    'label' => 'Cancel',
+                    'htmlOptions' => array('submit'=>Yii::app()->createUrl("node/view",array('id'=>$id)),
+                    						'style'=>'	margin-bottom:30px',)
+            ));
+
+		
+//echo CHtml::button('Save', array('submit' => Yii::app() -> createUrl("node/uploadconfig", array('node' => $id)), 'params' => array('cfile' => 'tio'), ));
+//echo CHtml::button('Cancel', array('submit' => array('view', 'id' => $id)));
 ?>
 </div>
 
@@ -35,7 +57,7 @@ echo CHtml::button('Cancel', array('submit' => array('view', 'id' => $id)));
 	$("#edit-node-config").keydown(function(e) {
 
 		if (e.which === 9 && e.shiftKey) {
-			console.log("ES UN SHIFTAB");
+			
 			// prevent the focus lose
 			e.preventDefault();
 

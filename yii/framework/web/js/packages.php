@@ -13,7 +13,7 @@
 
 return array(
 	'jquery'=>array(
-		'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
+		//'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
 	),
 	'yii'=>array(
 		'js'=>array('jquery.yii.js'),

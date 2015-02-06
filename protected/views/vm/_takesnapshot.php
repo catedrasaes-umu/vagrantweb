@@ -82,7 +82,7 @@
 	
 	//Implemented to handle key enter press and form submission	
 	jQuery(function($) {
-	jQuery('#snapshot-take-form').live('submit',function() {
+	jQuery('#snapshot-take-form').on('submit',function() {
 		return take_snapshot($("#snapshot-name").val(),$("#snapshot-desc").val());
 	});
 });

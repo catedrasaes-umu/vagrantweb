@@ -37,7 +37,7 @@ class NodeModel extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('node_name, node_address, node_port, node_password', 'required'),
+			array('node_name, node_address, node_password', 'required'),
 			array('node_port', 'numerical', 'integerOnly'=>true, 'allowEmpty'=>false),
 			array('node_password', 'length', 'max'=>64),
 			// The following rule is used by search().
@@ -92,6 +92,10 @@ class NodeModel extends CActiveRecord
 		));
 	}	
 	
+	private function isValidMd5($md5 ='') {
+	  return strlen($md5) == 32 && ctype_xdigit($md5);
+	}
+
 	public function beforeSave()
 	{
 		$saved = NodeModel::model() -> findByPk($this->node_name);
@@ -100,7 +104,7 @@ class NodeModel extends CActiveRecord
 		//FIXME TODO encriptar contraseña
 		//debug(crypt($this->node_password, $this->generateSalt()));
 		
-		if (empty($saved) || $saved->node_password!=$this->node_password)		
+		if (empty($saved) || $saved->node_password!=$this->node_password)
 			$this->node_password=md5($this->node_password);
 		
 		return true;

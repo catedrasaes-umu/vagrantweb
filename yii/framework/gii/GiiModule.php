@@ -122,7 +122,7 @@ class GiiModule extends CWebModule
 			'user'=>array(
 				'class'=>'CWebUser',
 				'stateKeyPrefix'=>'gii',
-				'loginUrl'=>Yii::app()->createUrl($this->getId().'/default/login'),
+				//'loginUrl'=>Yii::app()->createUrl($this->getId().'/default/login'),
 			),
 			'widgetFactory' => array(
 				'class'=>'CWidgetFactory',
@@ -161,9 +161,12 @@ class GiiModule extends CWebModule
 	 */
 	public function beforeControllerAction($controller, $action)
 	{
+
 		if(parent::beforeControllerAction($controller, $action))
 		{
+
 			$route=$controller->id.'/'.$action->id;
+			
 			if(!$this->allowIp(Yii::app()->request->userHostAddress) && $route!=='default/error')
 				throw new CHttpException(403,"You are not allowed to access this page.");
 

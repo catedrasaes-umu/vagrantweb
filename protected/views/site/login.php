@@ -5,18 +5,20 @@
 
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
-	'Login',
+	//'Login',
 );
 ?>
 
-<h1>Login</h1>
+<div class="col-lg-5 col-lg-push-4">
+<h1 class="page-header">Login</h1>
 
 <p>Please fill out the following form with your login credentials:</p>
 
 <div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
+	'htmlOptions' => array('class' => 'well'), // for inset effect
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
@@ -43,8 +45,16 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php //echo CHtml::submitButton('Login'); ?>
+		<?php
+		$this->widget(
+			    'booster.widgets.TbButton',
+			    array('buttonType' => 'submit', 'label' => 'Login')
+			);
+		?>
+		
 	</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+</div>

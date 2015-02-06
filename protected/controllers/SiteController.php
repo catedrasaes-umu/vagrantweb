@@ -1,7 +1,26 @@
 <?php
 
+// include 'Rights.php';
+
 class SiteController extends Controller
 {
+
+	// public function accessRules() {
+	// 	return array( array('index', 'error', 'contact', 'login', 'logout'));
+	// }
+
+	// public function allowedActions()
+	// {
+	// 	return array( 'index', 'error', 'contact', 'login', 'logout');
+	// }
+
+	public function filters()
+	{
+	        return array(
+	                'rights - index, login, logout, contact,error,proxy',
+	        );
+	}
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -21,14 +40,35 @@ class SiteController extends Controller
 		);
 	}
 
+	public function actionControlpanel()
+	{
+		$model = NodeModel::model() -> findAll();
+
+		$nodes = array();
+		foreach ($model as $node) {
+			array_push($nodes, $node->node_name);			
+		}
+		
+
+		$this->render('controlpanel',array('nodes' => $nodes));		
+	}
+
+	
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionIndex()
 	{
+		// var_dump(Yii::app()->user->isGuest);
+		// var_dump(Yii::app()->user->Id);
+		//debug(Rights::getAssignedRoles(Yii::app()->user->Id));
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		// debug(Yii::app()->getModule("rights")->getAuthorizer()->getSuperusers());
+		// debug(Yii::app()->getModule("rights")->getAuthorizer()->getRoles());
+		//$res=Rights::getAssignedRoles(Yii::app()->user->Id);
+		//debug($res['AdminRole']);
 		$this->render('index');
 	}
 
@@ -37,12 +77,21 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
+
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
 				$this->render('error', $error);
+		}
+	}
+
+	public function actionProxy(){
+		if (Yii::app()->user->checkAccess('Site.Controlpanel')){
+			$this -> redirect(Yii::app()->createUrl("site/controlpanel"));
+		}else{
+			$this -> redirect(Yii::app()->createUrl("node/index"));
 		}
 	}
 
@@ -76,7 +125,8 @@ class SiteController extends Controller
 	 * Displays the login page
 	 */
 	public function actionLogin()
-	{
+	{		
+
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -91,9 +141,18 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate() && $model->login()){
+
+				//$this->redirect(array('site/controlpanel'));
+//				$this->redirect(Yii::app()->user->returnUrl);
+				if (Yii::app()->user->checkAccess('Site.Controlpanel')){
+					$this -> redirect(Yii::app()->createUrl("site/controlpanel"));
+				}else{
+					$this -> redirect(Yii::app()->createUrl("node/index"));
+				}
+			}
 		}
+		
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
@@ -104,6 +163,7 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
+		
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }

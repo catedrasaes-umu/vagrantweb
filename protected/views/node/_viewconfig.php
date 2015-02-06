@@ -1,13 +1,30 @@
 <?php
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
-    'id'=>'vagrant-config-dialog',
-    'options'=>array(
-        'title'=>'Vagrant Config',
-        'width' => 'auto',
-        'height'=> 'auto',         
-        'autoOpen'=>false,
-    ),
-));
+
+
+
+$this->breadcrumbs=array(
+    'Nodes'=>array('index'),
+    $node => array('view','id'=>$node),
+//    $node->node_name,
+    'Config'
+);
+?>
+
+<h1 class="page-header" style="text-transform:capitalize"><?php echo strtolower($node); ?>&nbsp;Configuration File</h1>
+
+<?php
+
+// $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+//     'id'=>'vagrant-config-dialog',
+//     'options'=>array(
+//         'title'=>'Vagrant Config',
+//         'width' => 'auto',
+//         'height'=> 'auto',         
+//         'autoOpen'=>false,
+//     ),
+// ));
+
+//$form=$this->beginWidget('CActiveForm');
 
 $highlighter = Yii::createComponent(array(
     'class' => 'application.components.geshi.GeSHiHighlighter',
@@ -19,9 +36,32 @@ $highlighter = Yii::createComponent(array(
 //FIXME TODO aqui se parsearia el contenido de la configuracion
 echo $highlighter->highlight($cfile);
 
-echo CHtml::button('Edit Config',array('submit'=>array('node/editconfig'),'params'=>array('id'=>$node,'cfile'=>$cfile)));
+//echo CHtml::button('Edit Config',array('submit'=>array('node/editconfig'),'params'=>array('id'=>$node,'cfile'=>$cfile)));
+
+
+
+
+
+$this->widget(
+                'booster.widgets.TbButton',
+                array('buttonType' => 'submit', 
+                    'label' => 'Edit Config',
+                    'htmlOptions' => array('submit'=>Yii::app()->createUrl("node/editconfig"),
+                                            'style'=>'margin-right:20px',
+                                            'params'=>array('id'=>$node,'cfile'=>$cfile))
+            ));
+
+
+$this->widget(
+                'booster.widgets.TbButton',
+                array('buttonType' => 'submit', 
+                    'label' => 'Cancel',
+                    'htmlOptions' => array('submit'=>Yii::app()->createUrl("node/view",
+                                                                            array('id'=>$node)))
+            ));
+
 
 // echo $this->renderPartial('_viewconfig', array('node'=>$node,'cfile'=>$cfile)); 
 
 	
-$this->endWidget('zii.widgets.jui.CJuiDialog');	
+//$this->endWidget('CActiveForm');	
