@@ -21,6 +21,7 @@ The requirements to install this web app are the following:
 * php5-curl
 * php5-mysql
 
+Checkout the [Installation Video Tutorial](https://www.youtube.com/watch?v=FzZ3gkv7Rdo)
 
 Special thanks to the following authors for their useful plugins:
 
