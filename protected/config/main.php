@@ -21,7 +21,7 @@ if (file_exists($iniconfig))
 //TODO VER cómo poner los valores por defecto
 $connectionString = 'mysql:host=localhost;dbname='.(empty($varconf)?"vagrantweb":$varconf["dbname"]);
 $username = empty($varconf)?"root":$varconf["user"];
-$password = empty($varconf)?"quest2000":$varconf["password"];
+$password = empty($varconf)?"root":$varconf["password"];
 
 
 
